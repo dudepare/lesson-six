@@ -32,13 +32,7 @@ class EntryForm(forms.ModelForm):
         """
         # Call superclass __init__ method first!
         super(EntryForm, self).__init__(*args, **kwargs)
-        # If form is bound it means it has data to validate
-        # https://docs.djangoproject.com/en/dev/ref/forms/api/#bound-and-unbound-forms
-        if self.is_bound:
-            # obtain submit_end_now value from submitted data, if present
-            self.submit_end_now = kwargs['data'].get('submit_end_now', None)
-        else:
-            self.submit_end_now = None
+        self.submit_end_now = self.data.get('submit_end_now', None)
 
     def clean_start(self):
         """
