@@ -211,3 +211,11 @@ class ProjectUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('project-detail', 
             kwargs={self.pk_url_kwarg: self.kwargs[self.pk_url_kwarg]})
+
+
+class ClientRedirectView(RedirectView):
+    permanent = False # Set redirect non-permanent. We may want to change it later
+
+    def get_redirect_url(self, *args, **kwargs):
+        return reverse('client-list')
+
