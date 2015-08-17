@@ -21,6 +21,10 @@ class EntryForm(forms.ModelForm):
         model = Entry
         fields = ('start', 'stop', 'project', 'description')
         labels = {'start': 'Start Time', 'stop': 'End Time'}
+        help_texts = {
+            'start': 'Format: 2006-10-25 14:30',
+            'stop': 'Format: 2006-10-25 14:30',
+            }
 
     def clean_start(self):
         """
