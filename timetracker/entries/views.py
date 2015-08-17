@@ -1,10 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.urlresolvers import reverse, reverse_lazy
+from django.views.generic import (
+    RedirectView, ListView, DetailView, CreateView, UpdateView)
 
 from .forms import EntryForm, ProjectForm, ClientForm
 from .models import Client, Entry, Project
 
 
 def clients(request):
+    """
+    Deprecated by ClientCreateView below
+    """
     if request.method == 'POST':
         # Create our form object with our POST data
         form = ClientForm(request.POST)
@@ -28,7 +34,35 @@ def clients(request):
     })
 
 
+class ClientCreateView(CreateView):
+    """
+    CBV version of above "clients" view function
+
+    This view has a form for creating new clients. It also displays a list of
+    clients. We could have used ListView for the latter part but then we 
+    wouldn't have the form handling of CreateView. It could be possible to mix
+    in the functionality of CreateView and ListView classes with a combination 
+    of the mixin classes they comprise of but for the sake of simplicity we'll
+    just pass the client queryset into the template context via get_context_data
+    """
+    model = Client
+    form_class = ClientForm
+    template_name = 'clients.html'
+    # Alternately to defining a get_success_url method returning 
+    # reverse('client-list'), reverse_lazy allows us to provide a url reversal 
+    # before the project's URLConf is loaded
+    success_url = reverse_lazy('client-list')
+
+    def get_context_data(self, **kwargs):
+        context = super(ClientCreateView, self).get_context_data(**kwargs)
+        context['client_list'] = Client.objects.all()
+        return context
+
+
 def client_detail(request, pk):
+    """
+    Deprecated by ClientUpdateView below
+    """
     client = get_object_or_404(Client, pk=pk)
 
     if request.method == 'POST':
@@ -48,7 +82,23 @@ def client_detail(request, pk):
     })
 
 
+class ClientUpdateView(UpdateView):
+    """
+    CBV version of above "client_detail" view function
+    """
+    model = Client
+    form_class = ClientForm
+    template_name = 'client_detail.html'
+
+    def get_success_url(self):
+        return reverse('client-detail', 
+            kwargs={self.pk_url_kwarg: self.kwargs[self.pk_url_kwarg]})
+
+
 def entries(request):
+    """
+    Deprecated by EntryCreateView below
+    """
     if request.method == 'POST':
         # Create our form object with our POST data
         entry_form = EntryForm(request.POST)
@@ -71,7 +121,26 @@ def entries(request):
     })
 
 
+class EntryCreateView(CreateView):
+    """
+    CBV version of above "entries" view function
+    """
+    model = Entry
+    form_class = EntryForm
+    success_url = reverse_lazy('entry-list')
+    template_name = 'entries.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(EntryCreateView, self).get_context_data(**kwargs)
+        context['entry_list'] = Entry.objects.all()
+        return context
+
+
+
 def projects(request):
+    """
+    Deprecated by ProjectCreateView below
+    """
     if request.method == 'POST':
         # Create our form object with our POST data
         form = ProjectForm(request.POST)
@@ -91,7 +160,25 @@ def projects(request):
     })
 
 
+class ProjectCreateView(CreateView):
+    """
+    CBV version of above "projects" view function
+    """
+    model = Project
+    form_class = ProjectForm
+    success_url = reverse_lazy('project-list')
+    template_name = 'projects.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectCreateView, self).get_context_data(**kwargs)
+        context['project_list'] = Project.objects.all()
+        return context
+
+
 def project_detail(request, pk):
+    """
+    Deprecated by ProjectUpdateView below
+    """
     project = get_object_or_404(Project, pk=pk)
 
     if request.method == 'POST':
@@ -111,3 +198,16 @@ def project_detail(request, pk):
         'project': project,
         'form': form,
     })
+
+
+class ProjectUpdateView(UpdateView):
+    """
+    CBV version of above "project_detail" view function
+    """
+    model = Project
+    form_class = ProjectForm
+    template_name = 'project_detail.html'
+
+    def get_success_url(self):
+        return reverse('project-detail', 
+            kwargs={self.pk_url_kwarg: self.kwargs[self.pk_url_kwarg]})

@@ -19,8 +19,8 @@ class Project(models.Model):
 
 # Create your models here.
 class Entry(models.Model):
-    start = models.DateTimeField(default=timezone.now)
-    stop = models.DateTimeField(blank=True, null=True)
+    start = models.DateTimeField(default=timezone.now, help_text="Format: 2006-10-25 14:30")
+    stop = models.DateTimeField(blank=True, null=True, help_text="Format: 2006-10-25 14:30")
     project = models.ForeignKey('Project')
     description = models.CharField(max_length=200)
 

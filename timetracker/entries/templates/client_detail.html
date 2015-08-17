@@ -24,6 +24,10 @@
           {% endfor %}
         </ul>
       </li>
+    {% empty %}
+      <li>
+        No projects
+      </li>
     {% endfor %}
   </ul>
 {% endblock %}

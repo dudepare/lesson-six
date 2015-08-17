@@ -16,7 +16,7 @@
     <div class="panel-body">
       <form class="form-horizontal" method="post">
         {% csrf_token %}
-        {{ entry_form.as_p }}
+        {{ form.as_p }}
         <input class="btn btn-primary" type="submit" name="name" value="Create Entry">
       </form>
     </div>
