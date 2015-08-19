@@ -1,4 +1,4 @@
-# MelbDjango School Lesson Five
+# MelbDjango School Lesson Six
 
 ### Assignment 1
 
@@ -17,14 +17,13 @@ Check our RESOURCES.md for some links we think you'll find handy.
 - [ ] [Fork this repository][gh-fork]
 - [ ] Clone the repo to your own machine
 - [ ] Use the virtualenv you created in previous lesson
-- [ ] Convert time-tracker forms and views to ModelForms and Generic Class Based Views
-- [ ] Bonus 1: Create a RedirectView to redirect visitors from the root of the site (/) to the /clients/ page
-- [ ] Bonus 2: Add a button to the "entries" form (/entries/) called "Create Entry with End Now"
-  - This button should be an alternative submit button that automatically sets the end time to be the current time
+- [ ] Add tests for the views using the Django's test client
+- [ ] Bonus 1: Add tests to check for the string representation of your model instances
+- [ ] Bonus 2: Add separate tests for the forms
 
 When you've completed some or all of the homework please make a [Pull Request][gh-pr] against this repository. If you submit your work before Wednesday evening we'll give you feedback before the next class.
 
-If you'd like help, make a Pull Request with your incomplete work and ask a question to @darrenfrenkel, @sesh or @funkybob.
+If you'd like help, make a Pull Request with your incomplete work and ask a question to @darrenfrenkel, @sesh, @funkybob or @MarkusH
 
 
 ## Displaying the class slides
@@ -35,7 +34,7 @@ Install reveal-md with npm and use that to display the class slides.
     npm install -g reveal-md
 ```
 
-From within the `lesson-five` repo:
+From within the `lesson-six` repo:
 
 ```
     cd slides
