@@ -104,7 +104,7 @@ class ExampleTest(TestCase):
   def test_authenticate(self):
     self.assertIs(
       authenticate(username='admin', password='P4ssw0rd'),
-      self.user
+      self.admin
     )
     self.assertIsNone(
       authenticate(username='admin', password='Wr0ng')
@@ -172,9 +172,3 @@ class ViewTest(TestCase):
 - Add tests for the views using the Django's test client
 - Bonus 1: Add tests to check for the string representation of your model instances
 - Bonus 2: Add separate tests for the forms
-
----
-
-## References
-
-- TODO
