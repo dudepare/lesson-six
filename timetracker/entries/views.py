@@ -89,10 +89,7 @@ class ClientUpdateView(UpdateView):
     model = Client
     form_class = ClientForm
     template_name = 'client_detail.html'
-
-    def get_success_url(self):
-        return reverse('client-detail', 
-            kwargs={self.pk_url_kwarg: self.kwargs[self.pk_url_kwarg]})
+    success_url = reverse_lazy('client-list')
 
 
 def entries(request):
@@ -207,15 +204,10 @@ class ProjectUpdateView(UpdateView):
     model = Project
     form_class = ProjectForm
     template_name = 'project_detail.html'
-
-    def get_success_url(self):
-        return reverse('project-detail', 
-            kwargs={self.pk_url_kwarg: self.kwargs[self.pk_url_kwarg]})
+    success_url = reverse_lazy('project-list')
 
 
 class ClientRedirectView(RedirectView):
     permanent = False # Set redirect non-permanent. We may want to change it later
-
-    def get_redirect_url(self, *args, **kwargs):
-        return reverse('client-list')
+    url = reverse_lazy('client-list')
 
