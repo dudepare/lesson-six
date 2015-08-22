@@ -7,16 +7,16 @@
 ---
 
 
-Congratulations, you've made it to the git repository for our fifth lesson. Hopefully you also made it to the class and some of this makes sense to you.
+Congratulations, you've made it to the git repository for our sixth lesson. Hopefully you also made it to the class and some of this makes sense to you.
 
 Check our RESOURCES.md for some links we think you'll find handy.
 
 
 ## Homework Checklist
 
-- [ ] [Fork this repository][gh-fork]
-- [ ] Clone the repo to your own machine
-- [ ] Use the virtualenv you created in previous lesson
+- [x] [Fork this repository][gh-fork]
+- [x] Clone the repo to your own machine
+- [x] Use the virtualenv you created in previous lesson
 - [ ] Add tests for the views using the Django's test client
 - [ ] Bonus 1: Add tests to check for the string representation of your model instances
 - [ ] Bonus 2: Add separate tests for the forms
