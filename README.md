@@ -17,10 +17,10 @@ Check our RESOURCES.md for some links we think you'll find handy.
 - [x] [Fork this repository][gh-fork]
 - [x] Clone the repo to your own machine
 - [x] Use the virtualenv you created in previous lesson
-- [ ] Add tests for the views using the Django's test client
-- [ ] Bonus 1: Add tests to check for the string representation of your model instances
-- [ ] Bonus 2: Add separate tests for the forms
-- [ ] Super Bonus 3: Use [factory_boy](https://factoryboy.readthedocs.org/) to create factories for our models that can be used to simplify our tests.
+- [x] Add tests for the views using the Django's test client
+- [x] Bonus 1: Add tests to check for the string representation of your model instances
+- [x] Bonus 2: Add separate tests for the forms
+- [x] Super Bonus 3: Use [factory_boy](https://factoryboy.readthedocs.org/) to create factories for our models that can be used to simplify our tests.
 
 When you've completed some or all of the homework please make a [Pull Request][gh-pr] against this repository. If you submit your work before Wednesday evening we'll give you feedback before the next class.
 
